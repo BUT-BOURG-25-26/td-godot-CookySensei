@@ -1,10 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm6f2e680tf4q"]
+[gd_scene load_steps=8 format=3 uid="uid://dm6f2e680tf4q"]
 
-[ext_resource type="Script" uid="uid://burb5rrsuq2j0" path="res://Scripts/MainScene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bw0dhumjpcqmi" path="res://Scenes/Player.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://dw6klygwdqi7x" path="res://Scenes/EnemySpawner.tscn" id="2_tr2i4"]
-[ext_resource type="PackedScene" uid="uid://jdti88tld6ra" path="res://Scenes/Score.tscn" id="3_nhkr4"]
-[ext_resource type="Script" uid="uid://dt85hdpvh543a" path="res://Scripts/Joystick.gd" id="5_qxria"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpc76"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,7 +20,6 @@ tonemap_mode = 2
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hpc76"]
 
 [node name="MainScene" type="Node3D"]
-script = ExtResource("1_7rqgy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nhkr4")
@@ -49,19 +45,3 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_hpc76")
-
-[node name="Score" parent="." instance=ExtResource("3_nhkr4")]
-offset_left = 938.0
-offset_top = 22.0
-offset_right = -24.0
-offset_bottom = -569.0
-
-[node name="Joystick" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 20.0
-offset_top = 508.0
-offset_right = 174.0
-offset_bottom = 625.0
-script = ExtResource("5_qxria")

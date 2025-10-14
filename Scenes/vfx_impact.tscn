@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://d1ceuge37ite"]
 
-[ext_resource type="Script" uid="uid://dsu8nwqnmthwx" path="res://Scripts/vfx_attack.gd" id="1_x4grp"]
+[ext_resource type="Script" uid="uid://ces0o5luyiweb" path="res://Scripts/vfx_attack.gd" id="1_x4grp"]
 [ext_resource type="Texture2D" uid="uid://crv6go6rj70wo" path="res://Textures/Flash.png" id="1_yhdc5"]
 [ext_resource type="Texture2D" uid="uid://lyam3tctdn7w" path="res://Textures/Flare.png" id="2_xtguu"]
 [ext_resource type="Texture2D" uid="uid://xvnqu0h564ao" path="res://Textures/Shockwave.png" id="3_uqkyf"]
@@ -137,10 +137,8 @@ script = ExtResource("1_x4grp")
 
 [node name="Flash" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_uqkyf")
-emitting = false
 amount = 1
 lifetime = 0.1
-one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_x4grp")
 draw_pass_1 = SubResource("QuadMesh_lwtfs")
@@ -156,20 +154,16 @@ draw_pass_1 = SubResource("QuadMesh_lwtfs")
 
 [node name="Flare" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_x4grp")
-emitting = false
 amount = 1
 lifetime = 0.2
-one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_83i62")
 draw_pass_1 = SubResource("QuadMesh_lwtfs")
 
 [node name="Shockwave" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_xwisn")
-emitting = false
 amount = 1
 lifetime = 0.4
-one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_rwmre")
 draw_pass_1 = SubResource("QuadMesh_lwtfs")
@@ -177,5 +171,9 @@ draw_pass_1 = SubResource("QuadMesh_lwtfs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_lwtfs")
 
+[node name="VfxTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="Shockwave" to="." method="_on_shockwave_finished"]
+[connection signal="timeout" from="VfxTimer" to="." method="_on_vfx_timer_timeout"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjfi8jf4583jd"]
+
+[ext_resource type="Script" uid="uid://c8w5xaarr8jxp" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt5f1"]
+bg_color = Color(0.7372549, 1, 0.81960785, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_853f1"]
+bg_color = Color(0.6, 0.21600002, 0.21600002, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tt5f1")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="Container"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Beautiful Menu"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Container"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.2091, 0.23923501, 0.41, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tt5f1")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Container"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_853f1")
+text = "Quit"
+
+[connection signal="pressed" from="Container/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Container/QuitButton" to="." method="_on_quit_button_pressed"]
