@@ -26,12 +26,27 @@ columns = 2
 [node name="KillCountTitle" type="Label" parent="Grid"]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
-text = "Kills : "
+text = "Canons : "
 horizontal_alignment = 2
 autowrap_mode = 2
 text_overrun_behavior = 2
 
 [node name="KillCountValue" type="Label" parent="Grid"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+text = "0"
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="DifficultyTitle" type="Label" parent="Grid"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+text = "Difficulty : "
+horizontal_alignment = 2
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="DifficultyValue" type="Label" parent="Grid"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 text = "0"

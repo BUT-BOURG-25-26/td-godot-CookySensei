@@ -5,12 +5,15 @@ extends Node3D
 
 var enemy_kill_count: int = 0
 @export var kill_counter_label:Control
+@export var difficulty_label:Control
 @export var main_scene_node:Node3D
 var is_initialized = false
+var started_time = 0
 
 func initialize() -> void:
 	if(!is_initialized):
 		kill_counter_label = $"/root/MainScene/Score/Grid/KillCountValue"
+		difficulty_label = $"/root/MainScene/Score/Grid/DifficultyValue"
 		main_scene_node = $"/root/MainScene"
 		process_mode = Node.PROCESS_MODE_ALWAYS
 		if OS.get_name() == "Android" or OS.get_name() == "iOS": 
@@ -20,6 +23,9 @@ func initialize() -> void:
 func update_enemy_kill_count(new_counter_value):
 	enemy_kill_count = new_counter_value
 	kill_counter_label.text = str(enemy_kill_count)
+
+func update_difficulty(value:int):
+	difficulty_label.text = str(value)
 
 func game_over() -> void:
 	get_tree().paused = true;

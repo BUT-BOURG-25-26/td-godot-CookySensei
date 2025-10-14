@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm6f2e680tf4q"]
+[gd_scene load_steps=16 format=3 uid="uid://dm6f2e680tf4q"]
 
 [ext_resource type="Script" uid="uid://burb5rrsuq2j0" path="res://Scripts/MainScene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://bw0dhumjpcqmi" path="res://Scenes/Player.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://dw6klygwdqi7x" path="res://Scenes/EnemySpawner.tscn" id="2_tr2i4"]
 [ext_resource type="PackedScene" uid="uid://jdti88tld6ra" path="res://Scenes/Score.tscn" id="3_nhkr4"]
-[ext_resource type="Script" uid="uid://dt85hdpvh543a" path="res://Scripts/Joystick.gd" id="5_qxria"]
+[ext_resource type="Script" uid="uid://bcr4u31clvs3q" path="res://Scenes/CameraFollow.gd" id="4_f140w"]
+[ext_resource type="ArrayMesh" uid="uid://no54lqwvhik2" path="res://PirateAssets/OBJ format/patch-sand.obj" id="4_y4jh7"]
+[ext_resource type="ArrayMesh" uid="uid://c8e11i6n6q2qf" path="res://PirateAssets/OBJ format/ship-pirate-large.obj" id="7_q68mp"]
+[ext_resource type="PackedScene" uid="uid://blllaffdwbqvd" path="res://joystick_addon/touch_controls.tscn" id="8_f140w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpc76"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,10 +20,20 @@ sky_material = SubResource("ProceduralSkyMaterial_hpc76")
 background_mode = 2
 sky = SubResource("Sky_tr2i4")
 tonemap_mode = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_cihdc"]
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.3965, 0.47834167, 0.61, 1)
+fog_density = 1.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hpc76"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q68mp"]
+points = PackedVector3Array(-1.1727487, 0, -2.2376175, 1.1722786, 0, -2.2376175, -1.1727487, 0, -1.3630872, -1.8690681, 0.5793198, -2.2376175, -1.1003916, 0.19993359, -5.3510475, 1.8685985, 0.5793198, -2.2376175, 1.1722786, 0, -1.3630872, 1.0999217, 0.19993359, -5.3510475, -1.8690681, 0.5793198, -1.3630872, -1.1003916, 0.19993359, 2.4491978, -2.4, 1.8998568, -2.337637, -2.2003133, 1.4999896, -5.951165, -1.7003917, 0.69927996, -5.3510475, -2.100235, 1.4999896, -6.0511847, 2.4, 1.8998568, -2.337637, 1.8685985, 0.5793198, -1.3630872, 1.6999216, 0.69927996, -5.3510475, 2.1998434, 1.4999896, -5.951165, 1.0999217, 0.19993359, 2.4491978, 2.0997648, 1.4999896, -6.0511847, -2.4, 1.8998568, -1.2630677, -1.7003917, 0.69927996, 2.4491978, -0.28003144, 1.088419, 5.149726, -2.4, 2.0997903, -2.337637, -2.2003133, 3.4993255, -6.0511847, -2.0537198, 3.4993255, -6.4038177, -2.0001566, 2.7990704, -6.3512435, -1.7003917, 3.4993255, -6.55, 2.4, 2.0997903, -2.337637, 2.4, 1.8998568, -1.2630677, 2.1998434, 3.4993255, -6.0511847, 1.6999216, 0.69927996, 2.4491978, 1.9996867, 2.7990704, -6.3512435, 2.0532498, 3.4993255, -6.4038177, 0.27956152, 1.088419, 5.149726, 1.6999216, 3.4993255, -6.55, -2.4, 2.0997903, -1.2630677, -2.0001566, 1.4999896, 2.4491978, -2.2003133, 2.0997903, 2.5081835, -0.21002364, 3.0263119, 6.55, -2.2003133, 8.072441, -5.357459, -2.2003133, 4.1995807, -6.0511847, -2.0537198, 4.1995807, -6.4038177, -1.7003917, 4.1995807, -6.55, 2.4, 2.0997903, -1.2630677, 2.1998434, 4.1995807, -6.0511847, 2.1998434, 8.072441, -5.357459, 2.1998434, 2.0997903, 2.5081835, 1.9996867, 1.4999896, 2.4491978, 0.20955348, 3.0263119, 6.55, 2.0532498, 4.1995807, -6.4038177, 1.6999216, 4.1995807, -6.55, -2.2003133, 3.299392, 2.5081835, -2.2003133, 7.763275, -0.13207722, -2.2003133, 8.072441, -5.133056, -0.21002364, 3.2018633, 6.55, -0.13014889, 9.399805, -5.433115, -0.05544257, 9.190119, -6.35509, 0, 8.952148, -6.537177, -0.13014889, 9.96352, -0.41803074, 2.1998434, 8.072441, -5.133056, 2.1998434, 7.763275, -0.13207722, 2.1998434, 3.299392, 2.5081835, 0, 9.190119, -6.2717404, 0.067658424, 9.190119, -6.1678743, 0.12967896, 9.399805, -5.433115, 0.12967896, 9.96352, -0.41803074, 0.20955348, 3.2018633, 6.55, -0.13014889, 6.8426056, 4.289301, -0.13014889, 9.96352, -0.26800108, -0.1099453, 3.299392, 6.55, 0, 9.399805, -5.5074883, 0, 9.96352, -0.4936862, 0.12967896, 9.96352, -0.26800108, 0.12967896, 6.8426056, 4.289301, 0.109475374, 3.299392, 6.55, 0, 6.8426056, 4.364957, 0, 9.96352, -0.19362783)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q68mp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f140w"]
+albedo_color = Color(0.22439998, 0.26996005, 0.68, 1)
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_7rqgy")
@@ -35,15 +48,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0431051, -5.96046e-08, 8.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28469896, 0, -6.120058)
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0, 3.12405, 10.9635)
+transform = Transform3D(1, 0, 0, 0, 0.8320606, 0.55468476, 0, -0.55468476, 0.8320606, 1.6038146, 7.614294, 14.447055)
+script = ExtResource("4_f140w")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.624571, 0)
+light_energy = 15.0
+omni_range = 35.558
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("PlaneMesh_cihdc")
+transform = Transform3D(5.1733003, 0, 0, 0, 5.5338454, 0, 0, 0, 5.1364017, 0, -1.5421596, 0)
+mesh = ExtResource("4_y4jh7")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
@@ -56,12 +73,44 @@ offset_top = 22.0
 offset_right = -24.0
 offset_bottom = -569.0
 
-[node name="Joystick" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 20.0
-offset_top = 508.0
-offset_right = 174.0
-offset_bottom = 625.0
-script = ExtResource("5_qxria")
+[node name="Ship1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.799724)
+
+[node name="MeshShip1" type="MeshInstance3D" parent="Ship1"]
+transform = Transform3D(-0.6313313, 0, 1.897741, 0, 2, 0, -1.897741, 0, -0.6313313, 0, -2.5676358, -7.30742)
+mesh = ExtResource("7_q68mp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship1"]
+transform = Transform3D(-0.6313313, 0, 1.897741, 0, 2, 0, -1.897741, 0, -0.6313313, 0, -2.5676358, -7.30742)
+shape = SubResource("ConvexPolygonShape3D_q68mp")
+
+[node name="Ship2" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.01670204, 0, 0.9998605, 0, 1, 0, -0.9998605, 0, -0.01670204, 30.537394, 0, -6.58858)
+
+[node name="MeshShip1" type="MeshInstance3D" parent="Ship2"]
+transform = Transform3D(-0.6313313, 0, 1.897741, 0, 2, 0, -1.897741, 0, -0.6313313, 0, -2.5676358, -7.30742)
+mesh = ExtResource("7_q68mp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship2"]
+transform = Transform3D(-0.6313313, 0, 1.897741, 0, 2, 0, -1.897741, 0, -0.6313313, 0, -2.5676358, -7.30742)
+shape = SubResource("ConvexPolygonShape3D_q68mp")
+
+[node name="Ship3" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.01670204, 0, 0.9998605, 0, 1, 0, -0.9998605, 0, -0.01670204, -16.739603, 0, -0.9209423)
+
+[node name="MeshShip1" type="MeshInstance3D" parent="Ship3"]
+transform = Transform3D(0.30573002, 0, 1.9764947, 0, 2, 0, -1.9764947, 0, 0.30573002, 9.042263, -2.5676358, -5.1242256)
+mesh = ExtResource("7_q68mp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship3"]
+transform = Transform3D(0.4481332, 0, 1.9491478, 0, 2, 0, -1.9491478, 0, 0.4481332, 8.484251, -2.5676358, -4.4564)
+shape = SubResource("ConvexPolygonShape3D_q68mp")
+
+[node name="Water" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(106.895645, 0, 0, 0, 1, 0, 0, 0, 93.39843, 0, -1.5527635, 0)
+mesh = SubResource("PlaneMesh_q68mp")
+surface_material_override/0 = SubResource("StandardMaterial3D_f140w")
+
+[node name="TouchControls" parent="." instance=ExtResource("8_f140w")]

@@ -7,9 +7,18 @@ extends Node3D
 @onready var spawn_timer = $SpawnTimer
 var rng = RandomNumberGenerator.new()
 var player:Node3D
+var timer:Timer
+var start_time = 0;
+var difficulty_limit = 5;
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	timer = get_child(0)
+	start_time = Time.get_unix_time_from_system()
+
+func _process(delta:float):
+	timer.wait_time = get_difficulty_timer_time()
+	set_timer_difficulty()
 
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
@@ -25,3 +34,16 @@ func get_positive_or_negative() -> int:
 	var array = [-1,1]
 	var weights = PackedFloat32Array([1, 1])
 	return array[rng.rand_weighted(weights)]
+    
+func get_difficulty_timer_time():
+	if(Time.get_unix_time_from_system() - start_time > 30):
+		return 1
+	elif(Time.get_unix_time_from_system() - start_time > 20):
+		return 2
+	elif(Time.get_unix_time_from_system() - start_time > 10):
+		return 3
+	else:
+		return 4
+
+func set_timer_difficulty():
+	GameManager.update_difficulty(difficulty_limit-get_difficulty_timer_time())

@@ -2,8 +2,7 @@ extends Node3D
 
 @export var move_speed:float = 5
 @export var health: int = 3
-@export var vfx_scene: PackedScene = preload("res://Scenes/vfx_impact.tscn")
-
+@export var vfx_scene: PackedScene
 var enemy_kill_count: int = 0
 var healthbar
 var move_inputs: Vector2
@@ -11,6 +10,7 @@ var animation_tree: AnimationTree
 
 
 func _ready() -> void:
+	vfx_scene = preload("res://Scenes/vfx_impact.tscn")
 	healthbar = $PlayerBody/SubViewport/HealthBar
 	animation_tree = $CharacterOne/AnimationTree
 	healthbar.max_value = health
@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	move_inputs *= move_speed * delta
 	if move_inputs != Vector2.ZERO:
 		global_position += Vector3(move_inputs.x, 0.0, move_inputs.y)
+		rotation.y = Vector2(move_inputs.y, move_inputs.x).angle()
 	change_parameter_for_animation_idle()
 	return
 

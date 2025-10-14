@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwrduh41y5m0y"
+path="res://.godot/imported/structure.obj-e66d6309362cfd7f5de0e947ad6d1108.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure.obj-e66d6309362cfd7f5de0e947ad6d1108.mesh"]
+
+source_file="res://PirateAssets/OBJ format/structure.obj"
+dest_files=["res://.godot/imported/structure.obj-e66d6309362cfd7f5de0e947ad6d1108.mesh", "res://.godot/imported/structure.obj-e66d6309362cfd7f5de0e947ad6d1108.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

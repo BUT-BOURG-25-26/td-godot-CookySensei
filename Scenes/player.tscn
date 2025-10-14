@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bw0dhumjpcqmi"]
+[gd_scene load_steps=22 format=3 uid="uid://bw0dhumjpcqmi"]
 
 [ext_resource type="Script" uid="uid://b7jgpdoqsnm4r" path="res://Scripts/Player.gd" id="1_cvnsp"]
 [ext_resource type="Material" uid="uid://b33q5gc7fqod0" path="res://Materials/M_Player.tres" id="1_v0iea"]
@@ -95,24 +95,23 @@ animation = &"Animations/Root_Run"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_megsn"]
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"running"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yoq75"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ksbbd"]
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_arntx"]
 states/Animations_Root_Idle/node = SubResource("AnimationNodeAnimation_bhhdu")
-states/Animations_Root_Idle/position = Vector2(357, 163)
+states/Animations_Root_Idle/position = Vector2(357, 158)
 states/Animations_Root_Run/node = SubResource("AnimationNodeAnimation_52ee3")
 states/Animations_Root_Run/position = Vector2(595, 158)
 states/End/position = Vector2(779, 158)
 states/Start/position = Vector2(170, 161)
-transitions = ["Start", "Animations_Root_Idle", SubResource("AnimationNodeStateMachineTransition_bhhdu"), "Animations_Root_Idle", "Animations_Root_Run", SubResource("AnimationNodeStateMachineTransition_megsn"), "Animations_Root_Run", "End", SubResource("AnimationNodeStateMachineTransition_yoq75"), "Animations_Root_Run", "Animations_Root_Idle", SubResource("AnimationNodeStateMachineTransition_ksbbd")]
+transitions = ["Start", "Animations_Root_Idle", SubResource("AnimationNodeStateMachineTransition_bhhdu"), "Animations_Root_Idle", "Animations_Root_Run", SubResource("AnimationNodeStateMachineTransition_megsn"), "Animations_Root_Run", "Animations_Root_Idle", SubResource("AnimationNodeStateMachineTransition_ksbbd")]
 
 [node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_cvnsp")
@@ -159,7 +158,7 @@ libraries = {
 }
 
 [node name="CharacterOne" parent="." instance=ExtResource("4_dewec")]
-transform = Transform3D(0.46457157, 0, 0, 0, 0.550936, 0, 0, 0, 0.8280047, 0, 0, 0)
+transform = Transform3D(0.46457157, 0, 0, 0, 0.550936, 0, 0, 0, 0.48501754, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterOne"]
 libraries = {
