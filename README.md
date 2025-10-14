@@ -61,7 +61,7 @@ Pour avoir un nombre d'enemis infini sur notre jeu, nous avons besoin d'un objet
 * Lui attacher un script `EnemySpawner.gd`.
 * Au sein de ce script, vous devez faire apparaitre des enemy à intervalle de temps régulier.
 * Faites attention à ce que ces ennemis aient une distance acceptable par rapport au player (qu'ils ne spawnent pas sur lui).
-* Vous pouvez utiliser les ![timer](https://docs.godotengine.org/en/stable/classes/class_timer.html) de Godot (en créeant un node enfant dans votre scène)
+* Vous pouvez utiliser les [timer](https://docs.godotengine.org/en/stable/classes/class_timer.html) de Godot (en créeant un node enfant dans votre scène)
 * Ou alors vous pouvez utiliser la fonction `_process(delta)` qui vous permettra de calculer l'intervalle de temps pour spawner votre enemy.
 
 ```gdscript
@@ -73,7 +73,7 @@ func _on_timer_timeout():
  var enemy = enemy_scene.instantiate()
 ```
 
-### 1.4 Reload si Game Over
+### 1.5 Reload si Game Over
 
 * Quand la vie du joueur atteint 0 → rechargez la scène.
 * Si le cube touche le joueur, la vie diminue.
@@ -173,7 +173,7 @@ get_tree().change_scene_to_packed(start_level)
 ## 4. Modèles 3D
 
 Nous allons utiliser des modèles 3D avec des animations, pour que notre jeu ressemble un peu plus à quelque-chose. 
-Pour celà, nous allons utiliser le modèle 3D de Kenny Asset, disponible ![ici](https://kenney.nl/assets/animated-characters-2).
+Pour celà, nous allons utiliser le modèle 3D de Kenny Asset, disponible [ici](https://kenney.nl/assets/animated-characters-2).
 
 ### 4.1 Ajouter les assets au projet
 
